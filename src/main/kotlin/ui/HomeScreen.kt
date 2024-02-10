@@ -13,17 +13,23 @@ import androidx.compose.ui.window.Dialog
 
 @Composable
 fun HomeScreen() {
+    val screenState = remember { mutableStateOf(0) } // 0 -> EnterCityScreen, 1 -> WeatherInfoScreen
     val showEmptyCityDialog = remember { mutableStateOf(false) }
 
-    EnterCityScreen(
-        onClickToAcceptButton = {
-            if (it.isNotEmpty()) {
-                // TODO: Arama islemi yapacagiz.
-            } else {
-                showEmptyCityDialog.value = true
+    if (screenState.value == 1) {
+        WeatherInfoScreen()
+    } else if (screenState.value == 0) {
+        EnterCityScreen(
+            onClickToAcceptButton = {
+                if (it.isNotEmpty()) {
+                    // TODO: Arama islemi yapacagiz.
+                    screenState.value = 1
+                } else {
+                    showEmptyCityDialog.value = true
+                }
             }
-        }
-    )
+        )
+    }
 
     if (showEmptyCityDialog.value) {
         EmptyCityDialog(showEmptyCityDialog = showEmptyCityDialog)
