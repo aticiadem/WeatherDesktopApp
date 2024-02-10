@@ -2,7 +2,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
@@ -12,6 +11,7 @@ import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import ui.HomeScreen
 import utils.Constants.APP_NAME
+import utils.Constants.BACKGROUND_COLOR
 
 fun main() = application {
     Window(
@@ -25,7 +25,7 @@ fun main() = application {
         )
     ) {
         Surface(
-            color = Color(0xFFADD8E6),
+            color = BACKGROUND_COLOR,
             modifier = Modifier.fillMaxSize(),
         ) {
             HomeScreen()
