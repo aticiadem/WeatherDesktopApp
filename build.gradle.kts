@@ -3,6 +3,7 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 plugins {
     kotlin("jvm")
     id("org.jetbrains.compose")
+    kotlin("plugin.serialization") version "1.8.20"
 }
 
 group = "com.adematici"
@@ -18,10 +19,10 @@ dependencies {
     val ktor = "2.3.8"
 
     implementation(compose.desktop.currentOs)
-    implementation("io.ktor:ktor-client-core:$ktor")
-    implementation("io.ktor:ktor-client-cio:$ktor")
+    implementation("io.ktor:ktor-client-cio-jvm:$ktor")
     implementation("io.ktor:ktor-client-content-negotiation:$ktor")
-    implementation("io.ktor:ktor-serialization-gson:$ktor")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor")
+    implementation("com.google.code.gson:gson:2.8.9")
 }
 
 compose.desktop {
