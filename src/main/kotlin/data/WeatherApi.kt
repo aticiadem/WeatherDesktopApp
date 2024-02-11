@@ -1,6 +1,6 @@
 package data
 
-import data.model.Weather
+import data.model.WeatherState
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
@@ -17,6 +17,6 @@ class WeatherApi {
         }
     }
 
-    suspend fun getWeather(cityName: String): Weather =
+    suspend fun getWeather(cityName: String): WeatherState =
         client.get("${BASE_URL}weather?q=${cityName}&appid=${API_KEY}").body()
 }

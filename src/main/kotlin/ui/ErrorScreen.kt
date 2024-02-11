@@ -8,14 +8,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import data.model.WeatherState
 
 @Composable
-fun WeatherInfoScreen(data: WeatherState) {
+fun ErrorScreen(errorText: String) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
-        Text("$data", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+        Text(errorText, fontSize = 16.sp, fontWeight = FontWeight.Bold)
     }
 }

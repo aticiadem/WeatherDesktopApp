@@ -1,11 +1,12 @@
 package data.model
 
-
 import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Main(
     @SerializedName("feels_like")
-    val feelsLike: Double? = null,
+    val feels_like: Double? = null,
     @SerializedName("humidity")
     val humidity: Int? = null,
     @SerializedName("pressure")
@@ -13,7 +14,7 @@ data class Main(
     @SerializedName("temp")
     val temp: Double? = null,
     @SerializedName("temp_max")
-    val tempMax: Double? = null,
+    val temp_max: Double? = null,
     @SerializedName("temp_min")
-    val tempMin: Double? = null
+    val temp_min: Double? = null
 )
