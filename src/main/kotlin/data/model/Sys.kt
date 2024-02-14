@@ -13,6 +13,4 @@ data class Sys(
     val sunrise: Int? = null,
     @SerializedName("sunset")
     val sunset: Int? = null,
-    @SerializedName("type")
-    val type: Int? = null
 )

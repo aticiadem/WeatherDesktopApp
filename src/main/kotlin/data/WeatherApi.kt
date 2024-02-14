@@ -2,11 +2,12 @@ package data
 
 import data.model.WeatherState
 import io.ktor.client.HttpClient
-import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
+import io.ktor.client.statement.*
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.json.Json
 import utils.Constants.API_KEY
 import utils.Constants.BASE_URL
 
@@ -17,6 +18,9 @@ class WeatherApi {
         }
     }
 
-    suspend fun getWeather(cityName: String): WeatherState =
-        client.get("${BASE_URL}weather?q=${cityName}&appid=${API_KEY}").body()
+    suspend fun getWeather(cityName: String): WeatherState {
+        val json = Json { ignoreUnknownKeys = true }
+        val response = client.get("${BASE_URL}weather?q=${cityName}&appid=${API_KEY}&units=metric")
+        return json.decodeFromString(response.bodyAsText())
+    }
 }
